@@ -27,6 +27,7 @@ double zeroFunction(double inicio, double fim, double tolerancia){
 
 int main() {
     cout << "Insira o inicio, depois o fim do intervalo, e então a potencia da tolerancia " << endl;
+    cout << "Ex: 0 1 -8" << endl;
     double inicio, fim, potencia;
     cin >> inicio >> fim >> potencia;
 
