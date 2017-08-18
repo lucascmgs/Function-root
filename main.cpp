@@ -3,37 +3,73 @@
 #include <cmath>
 using namespace std;
 
+
+const double tolerancia = pow(10, -14);
+
 double funcaoDesejada(double param){
-    return sin(param) ;
+    return  201.062*(1 - exp(-0.4 * param)) -80.425 * param + 300;
 }
 
-double zeroFunction(double inicio, double fim, double tolerancia){
+double derivadaDesejada(double param){
+    return (80.425 * exp(-0.4*param) - 80.425);
+}
+
+double bissecao(double inicio, double fim){
     bool crescente = funcaoDesejada(inicio) < funcaoDesejada(fim) ? true : false;
-    double meio = (fim - inicio) /2, estimativa;
+    double meio = abs(fim - inicio) /2, estimativa;
+    int iteracoes = 0;
     while(abs(fim - inicio) > tolerancia) {
+	iteracoes++;
         meio = (fim + inicio)/2;
         estimativa = funcaoDesejada(meio);
-	
+
 	cout << inicio << " " << fim << " " << meio << " " << estimativa << endl;
 
-	if((crescente && estimativa < 0) || (!crescente && estimativa > 0)){
-		inicio = meio;
-	} else {
-		fim = meio;
+	if(crescente){
+		if(estimativa < 0){
+			inicio = meio;
+		} else {
+				fim = meio;
+		}
+	} else{
+		if(estimativa > 0){
+			inicio = meio;
+		} else {
+			fim = meio;
+		}
 	}
     }
+    cout << "Numero de iteracoes por bisseção: " << iteracoes << endl;
+
     return meio;
 
+}
+
+double newton(double inicio, double fim) {
+    double x0;
+    double x1 = (inicio + fim)/2;
+    int iteracoes = 0;
+    do {
+	iteracoes++;
+	cout << x0 << " " << x1 << endl;
+	x0 = x1;
+	x1 = x0 - funcaoDesejada(x0)/derivadaDesejada(x0);
+    } while(abs(x1 - x0) > tolerancia);
+    cout << "Numero de iteracoes por newton: " << iteracoes << endl;
+
+    return x1;
 }
 
 
 
 int main() {
-    
-    double inicio, fim, tolerancia;
-    cin >> inicio >> fim >> tolerancia;
 
-    double aproximacao = zeroFunction(inicio, fim, pow(10, -tolerancia));
-    cout << "Aproximação do zero da função: " << setprecision(10) << aproximacao << endl; 
+    double inicio, fim;
+    cin >> inicio >> fim;
+
+
+    cout << "Aproximação pelo metodo da Bissecao: " << setprecision(12) << bissecao(inicio, fim) << endl; 
+    cout << "Aproximação pelo metodo de Newton-Raphson: " << setprecision(12) << newton(inicio, fim) << endl; 
+
     return 0;
 }
