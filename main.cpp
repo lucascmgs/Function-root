@@ -64,12 +64,12 @@ double newton(double inicio, double fim) {
 
 int main() {
 
-    double inicio, fim;
-    cin >> inicio >> fim;
-
-
-    cout << "Aproximação pelo metodo da Bissecao: " << setprecision(12) << bissecao(inicio, fim) << endl; 
-    cout << "Aproximação pelo metodo de Newton-Raphson: " << setprecision(12) << newton(inicio, fim) << endl; 
-
+    double inicio = 6, fim = 7;
+    cout << "Usando bisseção:" << endl;
+    double bissec = bissecao(inicio, fim);
+    cout << "Resultado: " << setprecision(8) <<bissec << endl;;
+    cout << "Usando Newton:" << endl;
+    double ponto_fixo = newton(inicio, fim);
+    cout << "Resultado: " << setprecision(8) << ponto_fixo  << endl;
     return 0;
 }
