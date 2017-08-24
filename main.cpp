@@ -7,11 +7,11 @@ using namespace std;
 const double tolerancia = pow(10, -14);
 
 double funcaoDesejada(double param){
-    return  201.062*(1 - exp(-0.4 * param)) -80.425 * param + 300;
+    return  201.0625*(1 - exp(-0.4 * param)) -80.425 * param + 300;
 }
 
 double derivadaDesejada(double param){
-    return (80.425 * exp(-0.4*param) - 80.425);
+    return 80.425 * (exp(-0.4*param) - 1);
 }
 
 double bissecao(double inicio, double fim){
