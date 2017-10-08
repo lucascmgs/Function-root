@@ -4,7 +4,7 @@
 using namespace std;
 
 
-const double tolerancia = pow(10, -14);
+const double tolerancia = pow(10, -6);
 
 double funcaoDesejada(double param){
     return  201.0625*(1 - exp(-0.4 * param)) -80.425 * param + 300;
@@ -39,7 +39,7 @@ double bissecao(double inicio, double fim){
 		}
 	}
     }
-    cout << "Numero de iteracoes por bisseção: " << iteracoes << endl;
+    cout << "Numero de iteracoes por bissecao: " << iteracoes << endl;
 
     return meio;
 
@@ -65,11 +65,13 @@ double newton(double inicio, double fim) {
 int main() {
 
     double inicio = 6, fim = 7;
-    cout << "Usando bisseção:" << endl;
+    cout << "Usando bissecao:" << endl;
     double bissec = bissecao(inicio, fim);
     cout << "Resultado: " << setprecision(8) <<bissec << endl;;
     cout << "Usando Newton:" << endl;
     double ponto_fixo = newton(inicio, fim);
     cout << "Resultado: " << setprecision(8) << ponto_fixo  << endl;
+    int x = 0;
+    cin >> x;
     return 0;
 }
