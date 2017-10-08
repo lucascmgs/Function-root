@@ -18,12 +18,13 @@ double bissecao(double inicio, double fim){
     bool crescente = funcaoDesejada(inicio) < funcaoDesejada(fim) ? true : false;
     double meio = abs(fim - inicio) /2, estimativa;
     int iteracoes = 0;
+    cout << "Iteracoes a seguir. Estao no formato:" << endl << "Inicio do intervalo atual|fim do intervalo atual|meio do intervalo atual|estimativa para a funcao no meio" << endl;
     while(abs(fim - inicio) > tolerancia) {
 	iteracoes++;
         meio = (fim + inicio)/2;
         estimativa = funcaoDesejada(meio);
 
-	cout << inicio << " " << fim << " " << meio << " " << estimativa << endl;
+	cout <<  inicio << " | " << fim << " | " << meio << " | " << estimativa << endl;
 
 	if(crescente){
 		if(estimativa < 0){
@@ -49,9 +50,10 @@ double newton(double inicio, double fim) {
     double x0;
     double x1 = (inicio + fim)/2;
     int iteracoes = 0;
+    cout << "Iteracoes a seguir. Estao no formato Xi|Xi+1" << endl;
     do {
 	iteracoes++;
-	cout << x0 << " " << x1 << endl;
+	cout << x0 << " | " << x1 << endl;
 	x0 = x1;
 	x1 = x0 - funcaoDesejada(x0)/derivadaDesejada(x0);
     } while(abs(x1 - x0) > tolerancia);
@@ -67,10 +69,10 @@ int main() {
     double inicio = 6, fim = 7;
     cout << "Usando bissecao:" << endl;
     double bissec = bissecao(inicio, fim);
-    cout << "Resultado: " << setprecision(8) <<bissec << endl;;
+    cout << "Resultado: " << setprecision(6) <<bissec << endl;;
     cout << "Usando Newton:" << endl;
     double ponto_fixo = newton(inicio, fim);
-    cout << "Resultado: " << setprecision(8) << ponto_fixo  << endl;
+    cout << "Resultado: " << setprecision(6) << ponto_fixo  << endl;
     int x = 0;
     cin >> x;
     return 0;
