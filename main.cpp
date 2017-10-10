@@ -4,7 +4,7 @@
 using namespace std;
 
 
-const double tolerancia = pow(10, -6);
+const double tolerancia = pow(10, -5);
 
 double funcaoDesejada(double param){
     return  201.0625*(1 - exp(-0.4 * param)) -80.425 * param + 300;
