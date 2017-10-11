@@ -28,9 +28,9 @@ double bissecao(double inicio, double fim){
 
 	if(crescente){
 		if(estimativa < 0){
-			inicio = meio;
+			fim = meio;
 		} else {
-				fim = meio;
+				inicio = meio;
 		}
 	} else{
 		if(estimativa > 0){
